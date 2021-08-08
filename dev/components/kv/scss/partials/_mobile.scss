@@ -1,0 +1,13 @@
+@include breakpoint(mobile) {
+    .#{$component-name}__content-inner {
+        .kv-title {
+            .title-eyebrow {
+                @include vw-convert-mo(margin-bottom, 5);
+                @include vw-font-size-mo(13);
+            }
+            .title-name {
+                @include vw-font-size-mo(23);
+            }
+        }
+    }
+}

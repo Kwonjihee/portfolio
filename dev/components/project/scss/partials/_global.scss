@@ -1,0 +1,76 @@
+.#{$component-name} {
+    &__list {
+        @include vw-convert-pc(margin, -20);
+        font-size: 0;
+        li {
+            display: inline-block;
+            width: 25%;
+            @include vw-convert-pc(height, 190);
+            @include vw-convert-pc(padding, 10);
+            box-sizing: border-box;
+        }
+    }
+    &__card {
+        overflow: hidden;
+        height: 100%;
+        &-link {
+            display: block;
+            position: relative;
+            height: 100%;
+            &:hover, &:focus, &:active {
+                @include vw-font-size-pc(12);
+                .#{$component-name}__card-content {
+                    transform: translateY(0);
+                }
+            }
+        }
+        &-content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            @include vw-convert-pc(padding, 20);
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            box-sizing: border-box;
+            font-size: 0;
+            transform: translateY(100%);
+            transition: transform .3s ease-in-out;
+            &:before, &-inner {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            &:before {
+                height: 100%;
+                content: '';
+            }
+            .project-title {
+                @include vw-font-size-pc(20);
+                font-weight: bold;
+                font-style: normal;
+                color: $color-white;
+                letter-spacing: 0.07em;
+            }
+            .project-date {
+                @include vw-convert-pc(margin-top, 10);
+                @include vw-font-size-pc(14);
+                color: #d3d3d3;
+            }
+        }
+        &-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    &__bg .section-bg-img {
+        background-image: url('#{$path-img}/project-bg.jpg');
+    }
+}

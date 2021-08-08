@@ -1,0 +1,53 @@
+.#{$component-name} {
+    &__content {
+        font-size: 0;
+    }
+    &__article {
+        display: inline-block;
+        width: 50%;
+        @include vw-convert-pc(padding-left, 100);
+        vertical-align: top;
+        box-sizing: border-box;
+        &-wrap {
+            @include vw-convert-pc(max-width, 890);
+            margin: 0 auto;
+        }
+    }
+    &__list {
+        li {
+            @include vw-convert-pc(margin-top, 18);
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+    .about-title {
+        @include vw-font-size-pc(20);
+        font-style: normal;
+        & + .about-text {
+            @include vw-convert-pc(margin-top, 8);
+        }
+        & + .#{$component-name}__list {
+            @include vw-convert-pc(margin-top, 25);
+        }
+    }
+    .about-text {
+        position: relative;
+        @include vw-convert-pc(padding-left, 12);
+        @include vw-font-size-pc(13);
+        color: #bfbfbf;
+        &:before {
+            position: absolute;
+            @include vw-convert-pc(top, 8);
+            left: 0;
+            @include vw-convert-pc(width, 4);
+            height: 1px;
+            border-radius: 50%;
+            background-color: #bfbfbf;
+            content: ''
+        }
+    }
+    &__bg .section-bg-img {
+        background-image: url('#{$path-img}/about-me-bg.jpg');
+    }
+}

@@ -1,0 +1,31 @@
+@include breakpoint(mobile) {
+    .#{$component-name} {
+        &__list {
+            max-width: none;
+            @include vw-convert-mo(margin, -5 auto);
+            &-head, &-box {
+                @include vw-convert-mo(padding, 5 0);
+                .skill-title {
+                    @include vw-font-size-mo(10);
+                }
+            }
+            &-head {
+                width: 20%;
+            }
+            &-box {
+                width: 80%;
+                .skill-graph {
+                    @include vw-convert-mo(min-height, 18);
+                }
+                .skill-graph-inner {
+                    @include vw-convert-mo(padding-left, 5);
+                }
+                .percent {
+                    @include vw-convert-mo(min-width, 34);
+                    @include vw-convert-mo(padding, 3 6);
+                    @include vw-font-size-mo(10);
+                }
+            }
+        }
+    }
+}

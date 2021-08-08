@@ -1,0 +1,86 @@
+.section {
+    height: 100%;
+    &-area {
+        @include absolute-full;
+        @include vw-convert-pc(padding, 60 140);
+        box-sizing: border-box;
+        &-inner {
+            overflow-x: hidden;
+            overflow-y: auto;
+            height: 100%;
+        }
+    }
+    &-head {
+        text-align: center;
+    }
+    &-title {
+        overflow: hidden;
+        display: inline-block;
+        @include vw-font-size-pc(48);
+        span {
+            display: block;
+            transform: translateY(120%);
+            .swiper-slide-active & {
+                transform: translateY(0);
+                transition: transform .3s ease-out .6s;
+            }
+        }
+        &:after {
+            display: block;
+            width: 100%;
+            height: 1px;
+            @include vw-convert-pc(margin-top, 7);
+            transform: scaleX(0) translateZ(0);
+            background-color: $color-white;
+            content: '';
+            transition: transform .6s ease-in-out;
+            .swiper-slide-active & {
+                transform: scaleX(1) translateZ(0);
+            }
+        }
+    }
+    &-content {
+        @include vw-convert-pc(margin-top, 50);
+    }
+    &-bg {
+        position: relative;
+        z-index: -1;
+        height: 100%;
+        &:after {
+            @include absolute-full;
+            background-color: $color-black;
+            opacity: .6;
+            content: ''; 
+        }
+        &-inner {
+            height: 100%;
+            transform: scale(1.3);
+        }
+        &-img {
+            height: 100%;
+            background: {
+                repeat: no-repeat;
+                position: 50% 50%;
+                size: cover;
+            }
+        }
+    }
+}
+
+@include breakpoint(mobile) {
+    .section {
+        &-area {
+            @include vw-convert-mo(padding, 30 50 60);
+        }
+        &-title {
+            @include vw-font-size-mo(22);
+            &:after {
+                @include vw-convert-mo(margin-top, 5)
+            }
+        }
+        &-content {
+            @include vw-convert-mo(margin-top, 30);
+        }
+    }
+    
+}

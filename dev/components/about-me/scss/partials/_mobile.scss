@@ -1,0 +1,34 @@
+@include breakpoint(mobile) {
+    .#{$component-name} {
+        &__article {
+            @include vw-convert-mo(padding-left, 5);
+            &-wrap {
+                max-width: none;
+            }
+        }
+        &__list {
+            li {
+                @include vw-convert-mo(margin-top, 9);
+                word-break: break-all;
+            }
+        }
+        .about-title {
+            @include vw-font-size-mo(12);
+            & + .about-text {
+                @include vw-convert-mo(margin-top, 4);
+            }
+            & + .#{$component-name}__list {
+                @include vw-convert-mo(margin-top, 14);
+            }
+        }
+        .about-text {
+            @include vw-convert-mo(padding-left, 10); 
+            @include vw-font-size-mo(10);
+            &:before {
+                @include vw-convert-mo(top, 5);
+                @include vw-convert-mo(width, 3);
+                height: 1px;
+            }
+        }
+    }
+}

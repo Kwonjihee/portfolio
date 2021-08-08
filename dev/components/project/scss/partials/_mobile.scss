@@ -1,0 +1,28 @@
+@include breakpoint(mobile) {
+    .#{$component-name} {
+        &__list {
+            @include vw-convert-mo(margin, -20);
+            li {
+                width: 50%;
+                @include vw-convert-mo(height, 100);
+                @include vw-convert-mo(padding, 10);
+            }
+        }
+        &__card {
+            &-link {
+                @include vw-font-size-mo(10);
+            }
+            &-content {
+                @include vw-convert-mo(padding, 10);
+                transform: translateY(0);
+                .project-title {
+                    @include vw-font-size-mo(10);
+                }
+                .project-date {
+                    @include vw-convert-mo(margin-top, 5);
+                    @include vw-font-size-mo(10);
+                }
+            }
+        }
+    }
+}

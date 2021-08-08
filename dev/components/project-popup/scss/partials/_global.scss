@@ -1,0 +1,102 @@
+.#{$component-name} {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9999;
+    width: 100%;
+    @include vw-convert-pc(padding, 40 0);
+    background-color: rgba(255, 255, 255,0.98);
+    color: $color-black;
+    box-sizing: border-box;
+    &__inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        @include vw-convert-pc(padding, 0 150);
+        box-sizing: border-box;
+    }
+    &__head {
+        position: relative;
+        @include vw-convert-pc(padding, 0 50 20);
+        border-bottom: 1px solid $color-black;
+        text-align: center;
+        .popup-title {
+            @include vw-font-size-pc(50);
+        }
+        .popup-close {
+            position: absolute;
+            @include vw-convert-pc(top, 0);
+            @include vw-convert-pc(right, 40);
+            @include vw-convert-pc(padding, 10);
+            @include vw-font-size-pc(40);
+            font-weight: bold;
+            color: black;
+            line-height: 1;
+            cursor: pointer;
+        }
+    }
+    &__area {
+        @include vw-convert-pc(margin-top, 150);
+    }
+    &__section {
+        @include vw-convert-pc(margin-top, 200);
+        &:first-child {
+            margin-top: 0;
+        }
+        &-area {
+            position: relative;
+            z-index: 10;
+            @include vw-convert-pc(width, 400);
+            font-weight: bold;
+            word-break: keep-all;
+            .project-title {
+                @include vw-font-size-pc(50);
+                font-weight: bold;
+            }
+            .project-link {
+                display: block;
+                @include vw-convert-pc(margin-top, 20);
+                @include vw-font-size-pc(12);
+                color: #333;
+            }
+            .project-text {
+                @include vw-convert-pc(margin-top, 30);
+                @include vw-convert-pc(margin-right, 180);
+                @include vw-font-size-pc(12);
+                color: #8c8c8c;
+                p {
+                    @include vw-convert-pc(margin-top, 8);
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+        &-img {
+            overflow-x: hidden;
+            overflow-y: auto;
+            @include vw-convert-pc(height, 500);
+            @include vw-convert-pc(margin-top, 50);
+            margin-left: auto;
+            width: 75%;
+            border: 1px solid #ddd;
+            background : {
+                size: 100% auto;
+                repeat: no-repeat;
+                attachment : revert;
+            }
+            &-wrap {
+                @include vw-convert-pc(margin-top, -40);
+            }
+            &:first-child {
+                margin-top: 0;
+            }
+            img {
+                width: 100%;
+            }
+        }
+    }
+}

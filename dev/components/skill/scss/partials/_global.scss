@@ -1,0 +1,82 @@
+.#{$component-name} {
+    &__list {
+        display: table;
+        @include vw-convert-pc(max-width, 800);
+        width: 100%;
+        @include vw-convert-pc(margin, -10 auto);
+        li {
+            display: table-row;
+            table-layout: fixed;
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+        &-head, &-box {
+            display: table-cell;
+            @include vw-convert-pc(padding, 10 0);
+            vertical-align: top;
+            .skill-title {
+                @include vw-font-size-pc(15);
+                font-style: normal;
+            }
+        }
+        &-head {
+            width: 15%;
+        }
+        &-box {
+            width: 75%;
+            .skill-graph {
+                overflow: hidden;
+                position: relative;
+                @include vw-convert-pc(min-height, 20);
+                border-radius: 2px;
+                font-size: 0;
+                &:before {
+                    @include absolute-full;
+                    z-index: 1;
+                    background-color: #fff;
+                    opacity: .3;
+                    content: '';
+                }
+            }
+            .skill-graph-inner {
+                display: inline-block;
+                width: 0;
+                height: 100%;
+                @include vw-convert-pc(padding-left, 5);
+                background: linear-gradient(90deg,#c4cc52,#7ee5b1);
+                text-align: right;
+                box-sizing: border-box;
+            }
+            .percent {
+                position: relative;
+                display: inline-block;
+                @include vw-convert-pc(min-width, 34);
+                height: 100%;
+                @include vw-convert-pc(padding, 3 6);
+                background-color: #000;
+                font-weight: bold;
+                @include vw-font-size-pc(11);
+                box-sizing: border-box;
+                &:before {
+                    position: absolute;
+                    top: 50%;
+                    right: 100%;
+                    width: 0;
+                    height: 0;
+                    border: 3px solid #000;
+                    border: {
+                        top-color: transparent;
+                        left-color: transparent;
+                        bottom-color: transparent;
+                    }
+                    transform: translateY(-50%);
+                    content: '';
+                }
+            }
+        }
+    }
+    &__bg .section-bg-img {
+        background-image: url('#{$path-img}/skill-bg.jpg');
+    }
+}

@@ -1,0 +1,57 @@
+.#{$component-name} {
+    &__content-inner {
+        height: 100%;
+        font-size: 0;
+        text-align: center;
+        &:before, .kv-title {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        &:before {
+            height: 100%;
+            content: '';
+        }
+        .kv-title {
+            color: $color-white;
+            opacity: .9;
+            .title-eyebrow {
+                display: block;
+                @include vw-convert-pc(margin-bottom, 10);
+                font-weight: normal;
+                @include vw-font-size-pc(30);
+            }
+            .title-name {
+                display: block;
+                @include vw-font-size-pc(80);
+                letter-spacing: 0.3em;
+            }
+        }
+    }
+    &__bg {
+        background-color: $color-white;
+        .kv-bg-left, .kv-bg-right {
+            position: absolute;
+            width: 55%;
+            height: 120%;
+            background: {
+                repeat: no-repeat;
+                size: cover;
+                position-y: center;
+            } 
+        }
+        .kv-bg-left {
+            left: -6%;
+            background: {
+                image: url('#{$path-img}/kv-bg-left.png');
+                position-x: right;
+            }
+        }
+        .kv-bg-right {
+            right: -6%;
+            background: {
+                image: url('#{$path-img}/kv-bg-right.png');
+                position-x: left;
+            }
+        }
+    }
+}

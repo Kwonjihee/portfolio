@@ -1,0 +1,30 @@
+@include breakpoint(mobile) {
+    .#{$component-name} {
+        @include vw-convert-mo(min-height, 200);
+        .swiper-pagination {
+            @include vw-convert-mo(right, 10);
+            .swiper-pagination-bullet {
+                @include vw-convert-mo(width, 12);
+                @include vw-convert-mo(height, 2);
+                @include vw-convert-mo(padding, 5 0);
+                &.swiper-pagination-bullet-active {
+                    @include vw-convert-mo(width, 25);
+                }
+            }
+        }
+        &__btn {
+            @include vw-convert-mo(right, 20);
+            @include vw-convert-mo(bottom, 20);
+            .swiper-button-prev, .swiper-button-next {
+                @include vw-convert-mo(width, 40);
+                @include vw-convert-mo(height, 40);
+                &:after {
+                    @include vw-font-size-mo(25);
+                }
+            }
+        }
+        .swiper-progress-bar {
+            @include vw-convert-mo(height, 6);
+        }
+    }
+}
