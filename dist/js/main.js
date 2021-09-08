@@ -37,7 +37,7 @@
                 for (var text in nameArr) {
                     nameResult += '<span>' + nameArr[text] + '</span>'
                 }
-                this.titleName.html(nameResult);;
+                this.titleName.html(nameResult);
             },
             changeEvents : function (event) {
                 var events = [],
@@ -66,16 +66,6 @@
                         ease : Power2.easeOut
                     });
                 }
-
-                // TweenMax.fromTo(this.titleEyebrow, 0.8 , {
-                //     y : 20,
-                //     opacity : 0,
-                // }, {
-                //     y : 0,
-                //     opacity : 1,
-                //     delay : 1.2,
-                //     ease : Power3.easeInOut
-                // });
             }
         };
         return KVComponent;
@@ -134,7 +124,7 @@
                 props : {
                     x : 0,
                     y : 0,
-                    speed : 0.09
+                    speed : 0.06
                 },
                 REVERSE_TYPE : null, //X or Y
                 reverseY : 1,
@@ -219,9 +209,10 @@
                 objWrap : '.main-container__wrapper',
                 objItem : '.main-container__item',
                 progressBar : '.slide_progress-bar',
+                typeControlW : 'type-control-white',
                 swiperOpts : {
                     autoplay: {
-                        delay: 30000,
+                        delay: 50000,
                         disableOnInteraction: false
                     },
                     navigation: {
@@ -260,11 +251,13 @@
                     this.opts.currIdx = this.opts.swiperInstance.realIndex;
                     _this.objItem.eq(_this.opts.currIdx).triggerHandler('activeSection')
                     _this.swiperProgress();
+                    _this.controlType();
                     _this.parallaxInit();
                     this.opts.swiperInstance.on('slideChangeTransitionStart', function () {
-                       _this.opts.currIdx  = _this.opts.swiperInstance.realIndex;
-                       _this.objItem.eq(_this.opts.currIdx).triggerHandler('activeSection')
+                        _this.opts.currIdx  = _this.opts.swiperInstance.realIndex;
+                        _this.objItem.eq(_this.opts.currIdx).triggerHandler('activeSection');
                         _this.swiperProgress();
+                        _this.controlType();
                         _this.parallaxDestroy();
                         _this.parallaxInit();
                     })
@@ -285,6 +278,18 @@
                     ease : Linear.easeNone,
                     width: '100%'
                 });
+            },
+            controlType : function () {
+                var html = $('html');
+                if (this.objItem.eq(this.opts.currIdx).hasClass(this.opts.typeControlW)) {
+                    if (!html.hasClass(this.opts.typeControlW)) {
+                        html.addClass(this.opts.typeControlW);
+                    }
+                } else {
+                    if (html.hasClass(this.opts.typeControlW)) {
+                        html.removeClass(this.opts.typeControlW);
+                    }
+                };
             },
             parallaxInit : function () {
                 var target = this.objItem.eq(this.opts.currIdx),
@@ -358,9 +363,11 @@
             var defParams = {
                 obj : container,
                 carLink : '.project__card-link',
+                popupWrap : '.project-popup__wrap',
                 popupClose : '.popup-close',
                 customEvent : '.main' + (new Date()).getTime() + Math.random(),
-                targetPopup : null
+                targetPopup : null,
+                currTarget : null
             };
             this.opts = $.extend(defParams, args || {});
             if (!(this.obj = $(this.opts.obj)).length) return;
@@ -372,6 +379,7 @@
                 this.bindEvents(true);
             },
             setElements : function () {
+                this.carLink = this.obj.find(this.opts.carLink);
                 this.carLink = this.obj.find(this.opts.carLink);
             },
             changeEvents : function (event) {
@@ -394,11 +402,25 @@
                 
                 if (this.opts.targetPopup !== null) return;
 
-                var target = $(e.currentTarget),
+                var _this = this,
+                    target = $(e.currentTarget),
                     targetOpen = target.data('popup-open');
-                this.opts.targetPopup = $('html, body').find('#project-popup');
+                this.opts.targetPopup = $('html, body').find('#'+targetOpen);
 
                 if (!this.opts.targetPopup) return;
+                this.opts.currTarget = target;
+                this.popupWrap = this.opts.targetPopup.find(this.opts.popupWrap);
+                var focusHTML = '<span style="width:1px;height:1px;" tabindex="0">';
+
+                this.popupWrap.before(focusHTML);
+                this.popupWrap.after(focusHTML);
+                this.popupWrap.attr('tabindex', '0');
+                win.setTimeout(function() {
+                    _this.popupWrap.focus();
+                });
+                this.popupPrevFocus = this.popupWrap.prev();
+                this.popupNextFocus = this.popupWrap.next();
+
                 this.opts.targetPopup.css('display', 'block');
                 this.opts.closePopup = this.opts.targetPopup.find(this.opts.popupClose);
                 
@@ -407,10 +429,20 @@
             },
             popupBindEvents : function (type) {
                 if (type) {
+                    this.popupPrevFocus.on('focusin', this.onPrevFocusFunc.bind(this));
+                    this.popupNextFocus.on('focusin', this.onNextFocusFunc.bind(this));
                     this.opts.closePopup.on('click', this.clickClose.bind(this));
                 } else {
+                    this.popupPrevFocus.off('focusin');
+                    this.popupNextFocus.off('focusin');
                     this.opts.closePopup.off('click');
                 }
+            },
+            onPrevFocusFunc : function () {
+                this.popupWrap.find('a, button, input').filter(':visible').last().focus();
+            },
+            onNextFocusFunc : function () {
+                this.popupWrap.focus()
             },
             clickClose : function (e) {
                 e.preventDefault();
@@ -421,6 +453,15 @@
                 this.popupBindEvents(false);
                 this.opts.targetPopup = null;
                 this.opts.closePopup = null;
+                
+                this.popupPrevFocus.remove();
+                this.popupNextFocus.remove();
+                this.popupPrevFocus = null;
+                this.popupNextFocus = null;
+                this.popupWrap = null;
+
+                this.opts.currTarget.focus();
+                this.opts.currTarget = null;
             }
         };
         return ProjectComponent;
@@ -462,91 +503,6 @@
     })();
     return ProjectComponent;
 }));
-// (function (global, factory) {
-//     global = global;
-//     global.ProjectComponent = factory();
-// }(window, function () {
-//     'use strict';
-//     var ProjectComponent = (function (isUndefined) {
-//         var win = window;
-
-//         function ProjectComponent (container, args) {
-//             var defParams = {
-//                 obj : container,
-//                 carLink : '.project__card-link',
-//                 customEvent : '.main' + (new Date()).getTime() + Math.random()
-//             };
-//             this.opts = $.extend(defParams, args || {});
-//             if (!(this.obj = $(this.opts.obj)).length) return;
-//             this.init();
-//         };
-//         ProjectComponent.prototype = {
-//             init : function () {
-//                 this.setElements();
-//                 this.bindEvents(true);
-//             },
-//             setElements : function () {
-//                 this.carLink = this.obj.find(this.opts.carLink);
-//             },
-//             changeEvents : function (event) {
-//                 var events = [],
-//                     eventNames = event.split(' ');
-//                 for (var key in eventNames) {
-//                     events.push(eventNames[key] + this.opts.customEvent);
-//                 }
-//                 return events.join(' ');
-//             },
-//             bindEvents : function (type) {
-//                 if (type) {
-//                     this.carLink.on('click', this.clickEvent.bind(this));
-//                 } else {
-//                     this.carLink.off('click');
-//                 }
-//             },
-//             clickEvent : function (e) {
-//                 e.preventDefault();
-//                 console.log('d');
-//             },
-//         };
-//         return ProjectComponent;
-//     })();
-//     return ProjectComponent;
-// }));
-// (function (global, factory) {
-//     global = global;
-//     $(function () {
-//         factory();
-//     })
-// }(window, function () {
-//     'use strict';
-//     var ProjectComponent = (function () {
-//         var win = window;
-
-//         function ProjectComponent (args) {
-//             var defParams = {
-//                 obj : '.project'
-//             };
-//             this.opts = $.extend(defParams, args || {});
-//             if (!(this.obj = $(this.opts.obj)).length) return;
-//             this.init();
-//         };
-//         ProjectComponent.prototype = {
-//             init : function () {
-//                 this.callComponent();
-//             },
-//             callComponent : function () {
-//                 var _this = this;
-//                 for (var i = 0, max = this.obj.length; i < max; i++) {
-//                     (function (index) {
-//                         var instance = new win.ProjectComponent(_this.obj.eq(index));
-//                     })(i);
-//                 }
-//             }
-//         };
-//         return new ProjectComponent();
-//     })();
-//     return ProjectComponent;
-// }));
 (function (global, factory) {
     global = global;
     global.SkillComponent = factory();
@@ -565,7 +521,7 @@
                 activeClass : 'swiper-slide-active',
                 customEvent : '.main' + (new Date()).getTime() + Math.random(),
                 currIdx : 0,
-                duration : 1200
+                duration : 600
             };
             this.opts = $.extend(defParams, args || {});
             if (!(this.obj = $(this.opts.obj)).length) return;
@@ -607,28 +563,6 @@
                 this.graphInit();
                 this.graphAnimation();
             },
-            graphAnimation : function () {
-                if (this.opts.currIdx === this.skillItem.length) return;
-
-                var _this = this,
-                    target = this.skillGraph.eq(this.opts.currIdx),
-                    targetValue = target.data('value') ? target.data('value') : 0,
-                    valueHalf = targetValue / 2,
-                    value = 0;
-
-                TweenMax.to(_this.skillGraphInner.eq(this.opts.currIdx), this.opts.duration/1000, {
-                    width : targetValue+'%',
-                    onUpdate : function () {
-                        value = Math.round(this._time * valueHalf);
-                        _this.skillPercent.eq(_this.opts.currIdx).text(value);
-                    },
-                    onComplete: function () {
-                        _this.opts.currIdx += 1;
-                        _this.graphAnimation();
-                    },
-                    delay : this.opts.currIdx === 0 ? 1.5 : 0
-                });
-            },
             graphInit : function () {
                 var _this = this;
 
@@ -637,6 +571,27 @@
                     width : 0
                 });
                 _this.skillPercent.text(0);
+            },
+            graphAnimation : function () {
+                if (this.opts.currIdx === this.skillItem.length) return;
+
+                var _this = this,
+                    target = this.skillGraph.eq(this.opts.currIdx),
+                    targetValue = target.data('value') ? target.data('value') : 0,
+                    value = 0;
+
+                TweenMax.to(_this.skillGraphInner.eq(this.opts.currIdx), this.opts.duration/1000, {
+                    width : targetValue+'%',
+                    onUpdate : function () {
+                        value = Math.round(this.progress() * targetValue);
+                        _this.skillPercent.eq(_this.opts.currIdx).text(value);
+                    },
+                    onComplete: function () {
+                        _this.opts.currIdx += 1;
+                        _this.graphAnimation();
+                    },
+                    delay : this.opts.currIdx === 0 ? 1 : 0
+                });
             }
         };
         return SkillComponent;

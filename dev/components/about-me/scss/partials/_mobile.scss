@@ -8,12 +8,12 @@
         }
         &__list {
             li {
-                @include vw-convert-mo(margin-top, 9);
+                @include vw-convert-mo(margin-top, 13);
                 word-break: break-all;
             }
         }
         .about-title {
-            @include vw-font-size-mo(12);
+            @include vw-font-size-mo(14);
             & + .about-text {
                 @include vw-convert-mo(margin-top, 4);
             }

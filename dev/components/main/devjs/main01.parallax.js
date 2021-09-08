@@ -15,7 +15,7 @@
                 props : {
                     x : 0,
                     y : 0,
-                    speed : 0.09
+                    speed : 0.06
                 },
                 REVERSE_TYPE : null, //X or Y
                 reverseY : 1,

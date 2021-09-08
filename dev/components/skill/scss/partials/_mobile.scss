@@ -4,7 +4,7 @@
             max-width: none;
             @include vw-convert-mo(margin, -5 auto);
             &-head, &-box {
-                @include vw-convert-mo(padding, 5 0);
+                @include vw-convert-mo(padding, 10 0);
                 .skill-title {
                     @include vw-font-size-mo(10);
                 }

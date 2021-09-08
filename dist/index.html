@@ -28,7 +28,7 @@
         <div class="main-container swiper-container">
             <div class="main-container__wrapper swiper-wrapper">
                 <!--/* Main KV */-->
-                <div class="main-container__item swiper-slide">
+                <div class="main-container__item swiper-slide type-control-white">
                     <section class="kv section">
                         <div class="kv__content section-area">
                             <div class="kv__content-inner section-area-inner">
@@ -40,11 +40,12 @@
                         </div>
                         <div class="kv__bg section-bg">
                             <div class="kv-bg-left" data-parallax></div>
-                            <div class="kv-bg-right" data-parallax='{"REVERSE_TYPE" : "X"}'></div>
+                            <div class="kv-bg-right" data-parallax></div>
                         </div>
                     </section>
                 </div>
                 <!--/* // Main KV */-->
+
                 <!--/* About me */-->
                 <div class="main-container__item swiper-slide">
                     <section class="about-me section">
@@ -112,12 +113,13 @@
                         </div>
                         <div class="about-me__bg section-bg">
                             <div class="section-bg-inner">
-                                <div class="section-bg-img" data-parallax></div>
+                                <div class="section-bg-img"></div>
                             </div>
                         </div>
                     </section>
                 </div>
                 <!--/* // About me */-->
+
                 <!--/* Skill */-->
                 <div class="main-container__item swiper-slide">
                     <section class="skill section">
@@ -231,12 +233,13 @@
                         </div>
                         <div class="skill__bg section-bg">
                             <div class="section-bg-inner">
-                                <div class="section-bg-img" data-parallax></div>
+                                <div class="section-bg-img"></div>
                             </div>
                         </div>
                     </section>
                 </div>
                 <!--/* // Skill */-->
+                
                 <!--/* Project */-->
                 <div class="main-container__item swiper-slide">
                     <section class="project section">
@@ -249,7 +252,7 @@
                                     <ul class="project__list">
                                     <li>
                                         <div class="project__card">
-                                            <a href="#" class="project__card-link" data-popup-open="project-popup" title="view more">
+                                            <a href="#" class="project__card-link" data-popup-open="samsung-popup" title="view more">
                                                 <div class="project__card-content">
                                                     <div class="project__card-content-inner">
                                                         <em class="project-title">삼성</em>
@@ -264,7 +267,7 @@
                                     </li>
                                     <li>
                                         <div class="project__card">
-                                            <a href="#" class="project__card-link" data-popup-open="project-popup" title="view more">
+                                            <a href="#" class="project__card-link" data-popup-open="line-popup" title="view more">
                                                 <div class="project__card-content">
                                                     <div class="project__card-content-inner">
                                                         <em class="project-title">일본 라인 뱅크</em>
@@ -279,7 +282,7 @@
                                     </li>
                                     <li>
                                         <div class="project__card">
-                                            <a href="#" class="project__card-link" data-popup-open="project-popup" title="view more">
+                                            <a href="#" class="project__card-link" data-popup-open="g2-popup" title="view more">
                                                 <div class="project__card-content">
                                                     <div class="project__card-content-inner">
                                                         <em class="project-title">현대 제네시스</em>
@@ -294,7 +297,7 @@
                                     </li>
                                     <li>
                                         <div class="project__card">
-                                            <a href="#" class="project__card-link" data-popup-open="project-popup" title="view more">
+                                            <a href="#" class="project__card-link" data-popup-open="gransaga-popup" title="view more">
                                                 <div class="project__card-content">
                                                     <div class="project__card-content-inner">
                                                         <em class="project-title">그란사가</em>
@@ -313,7 +316,7 @@
                         </div>
                         <div class="project__bg section-bg">
                             <div class="section-bg-inner">
-                                <div class="section-bg-img" data-parallax></div>
+                                <div class="section-bg-img"></div>
                             </div>
                         </div>
                     </section>
@@ -331,129 +334,183 @@
         </div>
         
         <!--/* Project Popup */-->
-        <section id="project-popup" class="project-popup" style="display:none;">
-            <div class="project-popup__inner">
-                <div class="project-popup__head">
-                    <h3 class="popup-title">PROJECT</h3>
-                    <a href="#" class="popup-close"><span class="blind">Close</span><span aria-hidden="true">X</span></a>
+        <section id="samsung-popup" class="project-popup" style="display:none;">
+            <div class="project-popup__wrap">
+                <div class="project-popup__inner">
+                    <div class="project-popup__head">
+                        <h3 class="popup-title">SAMSUNG PROJECT</h3>
+                        <a href="#" class="popup-close"><span class="blind">Close</span><span aria-hidden="true">X</span></a>
+                    </div>
+                    <div class="project-popup__area">
+                        <article class="project-popup__section">
+                            <div class="project-popup__section-area">
+                                <h4 class="project-title">Samsung Buds2</h4>
+                                <a href="https://www.samsung.com/global/galaxy/galaxy-buds2/" class="project-link" target="_blank">https://www.samsung.com/global/galaxy/galaxy-buds2/</a>
+                                <div class="project-text">
+                                    <p>마크업 담당 : html, css, scss</p>
+                                    <p>다국어 및 접근성을 고려한 웹 반응형 페이지로 제작하였습니다.</p>
+                                </div>
+                            </div>
+                            <div class="project-popup__section-img-wrap">
+                                <div class="project-popup__section-img">
+                                    <div class="project-popup__section-img-inner">
+                                        <img src="./imgs/samsung-buds2.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="project-popup__section">
+                            <div class="project-popup__section-area">
+                                <h4 class="project-title">Samsung Palette</h4>
+                                <a href="https://www.samsung.com/sg/mobile/retail-hub/meet-galaxy-s21-series/" class="project-link" target="_blank">https://www.samsung.com/sg/mobile/retail-hub/meet-galaxy-s21-series/</a>
+                                <div class="project-text">
+                                    <p>마크업 담당 : html, css, scss</p>
+                                    <p>다국어 및 접근성을 고려한 웹 반응형 페이지로 제작하였습니다.</p>
+                                </div>
+                            </div>
+                            <div class="project-popup__section-img-wrap">
+                                <div class="project-popup__section-img">
+                                    <div class="project-popup__section-img-inner">
+                                        <img src="./imgs/samsung-palette.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="project-popup__section">
+                            <div class="project-popup__section-area">
+                                <h4 class="project-title">Samsung Covid</h4>
+                                <div class="project-text">
+                                    <p>마크업 담당 : html, css, scss</p>
+                                    <p>&lt; 운영 종료 &gt; 삼성 인 앱에 한시적으로 오픈되는 페이지로 앱 환경을 고려하여 제작하였습니다.</p>
+                                </div>
+                            </div>
+                            <div class="project-popup__section-img-wrap">
+                                <div class="project-popup__section-img">
+                                    <div class="project-popup__section-img-inner">
+                                        <img src="./imgs/samsung-covid.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="project-popup__section">
+                            <div class="project-popup__section-area">
+                                <h4 class="project-title">Samsung Galaxy buying page</h4>
+                                <a href="https://www.samsung.com/au/smartphones/galaxy-s21-5g/buy/" class="project-link" target="_blank">https://www.samsung.com/au/smartphones/galaxy-s21-5g/buy/</a>
+                                <div class="project-text">
+                                    <p>마크업 담당 : html, css, scss</p>
+                                    <p>Samsung Galaxy 핸드폰을 구매할 수 있는 바잉 페이지입니다.</p>
+                                    <p>다국어 및 접근성을 고려한 웹 반응형 페이지로 제작하였습니다.</p>
+                                </div>
+                            </div>
+                            <div class="project-popup__section-img-wrap">
+                                <div class="project-popup__section-img">
+                                    <div class="project-popup__section-img-inner">
+                                        <img src="./imgs/samsung-hubble.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-                <div class="project-popup__area">
-                    <article class="project-popup__section">
-                        <div class="project-popup__section-area">
-                            <h4 class="project-title">Samsung Palette</h4>
-                            <a href="https://www.samsung.com/sg/mobile/retail-hub/meet-galaxy-s21-series/" class="project-link" target="_blank">https://www.samsung.com/sg/mobile/retail-hub/meet-galaxy-s21-series/</a>
-                            <div class="project-text">
-                                <p>마크업 담당 : html, css, scss</p>
-                                <p>다국어 및 접근성을 고려한 웹 반응형 페이지로 제작하였습니다.</p>
-                            </div>
-                        </div>
-                        <div class="project-popup__section-img-wrap">
-                            <div class="project-popup__section-img">
-                                <div class="project-popup__section-img-inner">
-                                    <img src="./imgs/samsung-palette.png" alt="">
+            </div>
+        </section>
+        <section id="line-popup" class="project-popup" style="display:none;">
+            <div class="project-popup__wrap">
+                <div class="project-popup__inner">
+                    <div class="project-popup__head">
+                        <h3 class="popup-title">LINE PROJECT</h3>
+                        <a href="#" class="popup-close"><span class="blind">Close</span><span aria-hidden="true">X</span></a>
+                    </div>
+                    <div class="project-popup__area">
+                        <article class="project-popup__section">
+                            <div class="project-popup__section-area">
+                                <h4 class="project-title">Japan LINE Bank</h4>
+                                <div class="project-text">
+                                    <p>마크업 담당 : html, css, scss, ejg</p>
+                                    <p>&lt; 미오픈 &gt; 예금, 송금 및 계좌관리 등등을 할 수 있는 페이지로 금융페이지의 특성상 반복되는 부분이 많아 코드의 중복을 줄이고 재사용이 가능하도록 고려하여 템플릿 모듈인 ejs를 사용하여 제작하였습니다.</p>
                                 </div>
                             </div>
-                        </div>
-                    </article>
-                    <article class="project-popup__section">
-                        <div class="project-popup__section-area">
-                            <h4 class="project-title">Samsung Covid</h4>
-                            <div class="project-text">
-                                <p>마크업 담당 : html, css, scss</p>
-                                <p>&lt; 운영 종료 &gt; 삼성 인 앱에 한시적으로 오픈되는 페이지로 앱 환경을 고려하여 제작하였습니다.</p>
-                            </div>
-                        </div>
-                        <div class="project-popup__section-img-wrap">
-                            <div class="project-popup__section-img">
-                                <div class="project-popup__section-img-inner">
-                                    <img src="./imgs/samsung-covid.png" alt="">
+                            <div class="project-popup__section-img-wrap">
+                                <div class="project-popup__section-img">
+                                    <div class="project-popup__section-img-inner">
+                                        <img src="./imgs/line-bank.jpg" alt="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
-                    <article class="project-popup__section">
-                        <div class="project-popup__section-area">
-                            <h4 class="project-title">Samsung Galaxy buying page</h4>
-                            <a href="https://www.samsung.com/au/smartphones/galaxy-s21-5g/buy/" class="project-link" target="_blank">https://www.samsung.com/au/smartphones/galaxy-s21-5g/buy/</a>
-                            <div class="project-text">
-                                <p>마크업 담당 : html, css, scss</p>
-                                <p>Samsung Galaxy 핸드폰을 구매할 수 있는 바잉 페이지입니다.</p>
-                                <p>다국어 및 접근성을 고려한 웹 반응형 페이지로 제작하였습니다.</p>
-                            </div>
-                        </div>
-                        <div class="project-popup__section-img-wrap">
-                            <div class="project-popup__section-img">
-                                <div class="project-popup__section-img-inner">
-                                    <img src="./imgs/samsung-hubble.jpg" alt="">
+                        </article>
+                    </div>
+                </div>
+        </section>
+        <section id="g2-popup" class="project-popup" style="display:none;">
+            <div class="project-popup__wrap">
+                <div class="project-popup__inner">
+                    <div class="project-popup__head">
+                        <h3 class="popup-title">GENESIS PROJECT</h3>
+                        <a href="#" class="popup-close"><span class="blind">Close</span><span aria-hidden="true">X</span></a>
+                    </div>
+                    <div class="project-popup__area">
+                        <article class="project-popup__section">
+                            <div class="project-popup__section-area">
+                                <h4 class="project-title">Genesis</h4>
+                                <a href="https://www.genesis.com/kr/ko/main.html" class="project-link" target="_blank">https://www.genesis.com/kr/ko/main.html</a>
+                                <div class="project-text">
+                                    <p>마크업 담당 : html, css, scss</p>
+                                    <p>&lt; 지원 업무 &gt; 웹 반응형을 페이지입니다.</p>
                                 </div>
                             </div>
-                        </div>
-                    </article>
-                    <article class="project-popup__section">
-                        <div class="project-popup__section-area">
-                            <h4 class="project-title">Japan LINE Bank</h4>
-                            <div class="project-text">
-                                <p>마크업 담당 : html, css, scss, ejg</p>
-                                <p>&lt; 미오픈 &gt; 예금, 송금 및 계좌관리 등등을 할 수 있는 페이지로 금융페이지의 특성상 반복되는 부분이 많아 코드의 중복을 줄이고 재사용이 가능하도록 고려하여 템플릿 모듈인 ejs를 사용하여 제작하였습니다.</p>
-                            </div>
-                        </div>
-                        <div class="project-popup__section-img-wrap">
-                            <div class="project-popup__section-img">
-                                <div class="project-popup__section-img-inner">
-                                    <img src="./imgs/line-bank.jpg" alt="">
+                            <div class="project-popup__section-img-wrap">
+                                <div class="project-popup__section-img">
+                                    <div class="project-popup__section-img-inner">
+                                        <img src="./imgs/genesis.jpg" alt="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
-                    <article class="project-popup__section">
-                        <div class="project-popup__section-area">
-                            <h4 class="project-title">Genesis</h4>
-                            <a href="https://www.genesis.com/kr/ko/main.html" class="project-link" target="_blank">https://www.genesis.com/kr/ko/main.html</a>
-                            <div class="project-text">
-                                <p>마크업 담당 : html, css, scss</p>
-                                <p>&lt; 지원 업무 &gt; 웹 반응형을 페이지입니다.</p>
-                            </div>
-                        </div>
-                        <div class="project-popup__section-img-wrap">
-                            <div class="project-popup__section-img">
-                                <div class="project-popup__section-img-inner">
-                                    <img src="./imgs/genesis.jpg" alt="">
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="gransaga-popup" class="project-popup" style="display:none;">
+            <div class="project-popup__wrap">
+                <div class="project-popup__inner">
+                    <div class="project-popup__head">
+                        <h3 class="popup-title">GRANSAGA PROJECT</h3>
+                        <a href="#" class="popup-close"><span class="blind">Close</span><span aria-hidden="true">X</span></a>
+                    </div>
+                    <div class="project-popup__area">
+                        <article class="project-popup__section">
+                            <div class="project-popup__section-area">
+                                <h4 class="project-title">GRANSAGA</h4>
+                                <div class="project-text">
+                                    <p>마크업 담당 : html, css, scss</p>
+                                    <p>&lt; 오픈 종료 &gt; GRANSAGA 티저 사이트로 모바일 페이지를 제작하였습니다.</p>
+                                    <p>모바일 페이지를 담당하여 비교적 최신문법들을 사용하여 애니메이션에 유의하며 제작하였습니다.</p>
                                 </div>
                             </div>
-                        </div>
-                    </article>
-                    <article class="project-popup__section">
-                        <div class="project-popup__section-area">
-                            <h4 class="project-title">GRANSAGA</h4>
-                            <div class="project-text">
-                                <p>마크업 담당 : html, css, scss</p>
-                                <p>&lt; 오픈 종료 &gt; GRANSAGA 티저 사이트로 모바일 페이지를 제작하였습니다.</p>
-                                <p>모바일 페이지를 담당하여 비교적 최신문법들을 사용하여 애니메이션에 유의하며 제작하였습니다.</p>
-                            </div>
-                        </div>
-                        <div class="project-popup__section-img-wrap">
-                            <div class="project-popup__section-img">
-                                <div class="project-popup__section-img-inner">
-                                    <img src="./imgs/gransaga.jpg" alt="">
+                            <div class="project-popup__section-img-wrap">
+                                <div class="project-popup__section-img">
+                                    <div class="project-popup__section-img-inner">
+                                        <img src="./imgs/gransaga.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="project-popup__section-img">
+                                    <div class="project-popup__section-img-inner">
+                                        <img src="./imgs/gransaga2.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="project-popup__section-img">
+                                    <div class="project-popup__section-img-inner">
+                                        <img src="./imgs/gransaga3.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="project-popup__section-img">
+                                    <div class="project-popup__section-img-inner">
+                                        <img src="./imgs/gransaga4.jpg" alt="">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="project-popup__section-img">
-                                <div class="project-popup__section-img-inner">
-                                    <img src="./imgs/gransaga2.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="project-popup__section-img">
-                                <div class="project-popup__section-img-inner">
-                                    <img src="./imgs/gransaga3.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="project-popup__section-img">
-                                <div class="project-popup__section-img-inner">
-                                    <img src="./imgs/gransaga4.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>

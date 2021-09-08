@@ -16,7 +16,7 @@
                 activeClass : 'swiper-slide-active',
                 customEvent : '.main' + (new Date()).getTime() + Math.random(),
                 currIdx : 0,
-                duration : 1200
+                duration : 600
             };
             this.opts = $.extend(defParams, args || {});
             if (!(this.obj = $(this.opts.obj)).length) return;
@@ -58,28 +58,6 @@
                 this.graphInit();
                 this.graphAnimation();
             },
-            graphAnimation : function () {
-                if (this.opts.currIdx === this.skillItem.length) return;
-
-                var _this = this,
-                    target = this.skillGraph.eq(this.opts.currIdx),
-                    targetValue = target.data('value') ? target.data('value') : 0,
-                    valueHalf = targetValue / 2,
-                    value = 0;
-
-                TweenMax.to(_this.skillGraphInner.eq(this.opts.currIdx), this.opts.duration/1000, {
-                    width : targetValue+'%',
-                    onUpdate : function () {
-                        value = Math.round(this._time * valueHalf);
-                        _this.skillPercent.eq(_this.opts.currIdx).text(value);
-                    },
-                    onComplete: function () {
-                        _this.opts.currIdx += 1;
-                        _this.graphAnimation();
-                    },
-                    delay : this.opts.currIdx === 0 ? 1.5 : 0
-                });
-            },
             graphInit : function () {
                 var _this = this;
 
@@ -88,6 +66,27 @@
                     width : 0
                 });
                 _this.skillPercent.text(0);
+            },
+            graphAnimation : function () {
+                if (this.opts.currIdx === this.skillItem.length) return;
+
+                var _this = this,
+                    target = this.skillGraph.eq(this.opts.currIdx),
+                    targetValue = target.data('value') ? target.data('value') : 0,
+                    value = 0;
+
+                TweenMax.to(_this.skillGraphInner.eq(this.opts.currIdx), this.opts.duration/1000, {
+                    width : targetValue+'%',
+                    onUpdate : function () {
+                        value = Math.round(this.progress() * targetValue);
+                        _this.skillPercent.eq(_this.opts.currIdx).text(value);
+                    },
+                    onComplete: function () {
+                        _this.opts.currIdx += 1;
+                        _this.graphAnimation();
+                    },
+                    delay : this.opts.currIdx === 0 ? 1 : 0
+                });
             }
         };
         return SkillComponent;

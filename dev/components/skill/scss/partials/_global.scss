@@ -13,11 +13,12 @@
         }
         &-head, &-box {
             display: table-cell;
-            @include vw-convert-pc(padding, 10 0);
+            @include vw-convert-pc(padding, 15 0);
             vertical-align: top;
             .skill-title {
                 @include vw-font-size-pc(15);
                 font-style: normal;
+                font-weight: bold;
             }
         }
         &-head {
@@ -34,7 +35,7 @@
                 &:before {
                     @include absolute-full;
                     z-index: 1;
-                    background-color: #fff;
+                    background-color: #c3c3c3;
                     opacity: .3;
                     content: '';
                 }
@@ -54,9 +55,10 @@
                 @include vw-convert-pc(min-width, 34);
                 height: 100%;
                 @include vw-convert-pc(padding, 3 6);
-                background-color: #000;
+                background-color: $color-black;
                 font-weight: bold;
                 @include vw-font-size-pc(11);
+                color: $color-white;
                 box-sizing: border-box;
                 &:before {
                     position: absolute;
@@ -64,7 +66,7 @@
                     right: 100%;
                     width: 0;
                     height: 0;
-                    border: 3px solid #000;
+                    border: 3px solid $color-black;
                     border: {
                         top-color: transparent;
                         left-color: transparent;

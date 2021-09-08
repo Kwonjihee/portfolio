@@ -12,9 +12,10 @@
                 objWrap : '.main-container__wrapper',
                 objItem : '.main-container__item',
                 progressBar : '.slide_progress-bar',
+                typeControlW : 'type-control-white',
                 swiperOpts : {
                     autoplay: {
-                        delay: 30000,
+                        delay: 50000,
                         disableOnInteraction: false
                     },
                     navigation: {
@@ -53,11 +54,13 @@
                     this.opts.currIdx = this.opts.swiperInstance.realIndex;
                     _this.objItem.eq(_this.opts.currIdx).triggerHandler('activeSection')
                     _this.swiperProgress();
+                    _this.controlType();
                     _this.parallaxInit();
                     this.opts.swiperInstance.on('slideChangeTransitionStart', function () {
-                       _this.opts.currIdx  = _this.opts.swiperInstance.realIndex;
-                       _this.objItem.eq(_this.opts.currIdx).triggerHandler('activeSection')
+                        _this.opts.currIdx  = _this.opts.swiperInstance.realIndex;
+                        _this.objItem.eq(_this.opts.currIdx).triggerHandler('activeSection');
                         _this.swiperProgress();
+                        _this.controlType();
                         _this.parallaxDestroy();
                         _this.parallaxInit();
                     })
@@ -78,6 +81,18 @@
                     ease : Linear.easeNone,
                     width: '100%'
                 });
+            },
+            controlType : function () {
+                var html = $('html');
+                if (this.objItem.eq(this.opts.currIdx).hasClass(this.opts.typeControlW)) {
+                    if (!html.hasClass(this.opts.typeControlW)) {
+                        html.addClass(this.opts.typeControlW);
+                    }
+                } else {
+                    if (html.hasClass(this.opts.typeControlW)) {
+                        html.removeClass(this.opts.typeControlW);
+                    }
+                };
             },
             parallaxInit : function () {
                 var target = this.objItem.eq(this.opts.currIdx),

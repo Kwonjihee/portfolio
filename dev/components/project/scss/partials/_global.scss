@@ -1,6 +1,7 @@
 .#{$component-name} {
     &__list {
         @include vw-convert-pc(margin, -20);
+        @include vw-convert-pc(padding, 0 100);
         font-size: 0;
         li {
             display: inline-block;

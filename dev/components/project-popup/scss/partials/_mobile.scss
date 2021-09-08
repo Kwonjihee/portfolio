@@ -1,49 +1,53 @@
-.#{$component-name} {
-    @include vw-convert-mo(padding, 20 0);
-    &__inner {
-        @include vw-convert-mo(padding, 0 30);
-    }
-    &__head {
-        @include vw-convert-mo(padding, 0 10 5);
-        .popup-title {
-            @include vw-font-size-mo(25);
+@include breakpoint(mobile) {
+    .#{$component-name} {
+        &__wrap {
+            @include vw-convert-mo(padding, 20 0);
         }
-        .popup-close {
-            @include vw-convert-mo(top, 0);
-            @include vw-convert-mo(right, 20);
-            @include vw-convert-mo(padding, 5);
-            @include vw-font-size-mo(20);
+        &__inner {
+            @include vw-convert-mo(padding, 0 30);
         }
-    }
-    &__area {
-        @include vw-convert-mo(margin-top, 40);
-    }
-    &__section {
-        @include vw-convert-mo(margin-top, 100);
-        &-area {
-            width: 70%;
-            .project-title {
-                @include vw-font-size-mo(30);
+        &__head {
+            @include vw-convert-mo(padding, 0 50 5);
+            .popup-title {
+                @include vw-font-size-mo(25);
             }
-            .project-link {
-                @include vw-convert-mo(margin-top, 20);
-                @include vw-font-size-mo(10);
+            .popup-close {
+                @include vw-convert-mo(top, 0);
+                @include vw-convert-mo(right, 20);
+                @include vw-convert-mo(padding, 5);
+                @include vw-font-size-mo(20);
             }
-            .project-text {
-                @include vw-convert-mo(margin-top, 30);
-                @include vw-convert-mo(margin-right, 50);
-                @include vw-font-size-mo(10);
-                p {
-                    @include vw-convert-mo(margin-top, 8);
+        }
+        &__area {
+            @include vw-convert-mo(margin-top, 40);
+        }
+        &__section {
+            @include vw-convert-mo(margin-top, 100);
+            &-area {
+                width: 70%;
+                .project-title {
+                    @include vw-font-size-mo(30);
+                }
+                .project-link {
+                    @include vw-convert-mo(margin-top, 20);
+                    @include vw-font-size-mo(10);
+                }
+                .project-text {
+                    @include vw-convert-mo(margin-top, 30);
+                    @include vw-convert-mo(margin-right, 50);
+                    @include vw-font-size-mo(10);
+                    p {
+                        @include vw-convert-mo(margin-top, 8);
+                    }
                 }
             }
-        }
-        &-img {
-            @include vw-convert-mo(min-height, 170);
-            @include vw-convert-mo(margin-top, 50);
-            width: 75%;
-            &-wrap {
-                @include vw-convert-mo(margin-top, -5);
+            &-img {
+                @include vw-convert-mo(min-height, 170);
+                @include vw-convert-mo(margin-top, 50);
+                width: 75%;
+                &-wrap {
+                    @include vw-convert-mo(margin-top, -5);
+                }
             }
         }
     }

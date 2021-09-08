@@ -2,6 +2,7 @@
     .#{$component-name} {
         &__list {
             @include vw-convert-mo(margin, -20);
+            padding: 0;
             li {
                 width: 50%;
                 @include vw-convert-mo(height, 100);

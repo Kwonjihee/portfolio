@@ -15,14 +15,14 @@
     }
     &__list {
         li {
-            @include vw-convert-pc(margin-top, 18);
+            @include vw-convert-pc(margin-top, 30);
             &:first-child {
                 margin-top: 0;
             }
         }
     }
     .about-title {
-        @include vw-font-size-pc(20);
+        @include vw-font-size-pc(18);
         font-style: normal;
         & + .about-text {
             @include vw-convert-pc(margin-top, 8);
@@ -35,7 +35,6 @@
         position: relative;
         @include vw-convert-pc(padding-left, 12);
         @include vw-font-size-pc(13);
-        color: #bfbfbf;
         &:before {
             position: absolute;
             @include vw-convert-pc(top, 8);
@@ -43,11 +42,17 @@
             @include vw-convert-pc(width, 4);
             height: 1px;
             border-radius: 50%;
-            background-color: #bfbfbf;
+            background-color: $color-default;
             content: ''
         }
     }
-    &__bg .section-bg-img {
-        background-image: url('#{$path-img}/about-me-bg.jpg');
+    &__bg {
+        // &:after {
+        //     background-color: $color-white;
+        //     opacity: 0.3;
+        // }
+        .section-bg-img {
+            background-image: url('#{$path-img}/about-me-bg.jpg');
+        }
     }
 }

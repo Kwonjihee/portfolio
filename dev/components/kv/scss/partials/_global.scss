@@ -3,6 +3,7 @@
         height: 100%;
         font-size: 0;
         text-align: center;
+        background-color: transparent;
         &:before, .kv-title {
             display: inline-block;
             vertical-align: middle;
@@ -18,17 +19,21 @@
                 display: block;
                 @include vw-convert-pc(margin-bottom, 10);
                 font-weight: normal;
-                @include vw-font-size-pc(30);
+                @include vw-font-size-pc(28);
             }
             .title-name {
                 display: block;
-                @include vw-font-size-pc(80);
+                @include vw-font-size-pc(65);
                 letter-spacing: 0.3em;
             }
         }
     }
     &__bg {
         background-color: $color-white;
+        &:after {
+            background-color: $color-black;
+            opacity: .6;
+        }
         .kv-bg-left, .kv-bg-right {
             position: absolute;
             width: 55%;

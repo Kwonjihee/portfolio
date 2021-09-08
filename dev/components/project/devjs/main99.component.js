@@ -10,9 +10,11 @@
             var defParams = {
                 obj : container,
                 carLink : '.project__card-link',
+                popupWrap : '.project-popup__wrap',
                 popupClose : '.popup-close',
                 customEvent : '.main' + (new Date()).getTime() + Math.random(),
-                targetPopup : null
+                targetPopup : null,
+                currTarget : null
             };
             this.opts = $.extend(defParams, args || {});
             if (!(this.obj = $(this.opts.obj)).length) return;
@@ -24,6 +26,7 @@
                 this.bindEvents(true);
             },
             setElements : function () {
+                this.carLink = this.obj.find(this.opts.carLink);
                 this.carLink = this.obj.find(this.opts.carLink);
             },
             changeEvents : function (event) {
@@ -46,11 +49,25 @@
                 
                 if (this.opts.targetPopup !== null) return;
 
-                var target = $(e.currentTarget),
+                var _this = this,
+                    target = $(e.currentTarget),
                     targetOpen = target.data('popup-open');
-                this.opts.targetPopup = $('html, body').find('#project-popup');
+                this.opts.targetPopup = $('html, body').find('#'+targetOpen);
 
                 if (!this.opts.targetPopup) return;
+                this.opts.currTarget = target;
+                this.popupWrap = this.opts.targetPopup.find(this.opts.popupWrap);
+                var focusHTML = '<span style="width:1px;height:1px;" tabindex="0">';
+
+                this.popupWrap.before(focusHTML);
+                this.popupWrap.after(focusHTML);
+                this.popupWrap.attr('tabindex', '0');
+                win.setTimeout(function() {
+                    _this.popupWrap.focus();
+                });
+                this.popupPrevFocus = this.popupWrap.prev();
+                this.popupNextFocus = this.popupWrap.next();
+
                 this.opts.targetPopup.css('display', 'block');
                 this.opts.closePopup = this.opts.targetPopup.find(this.opts.popupClose);
                 
@@ -59,10 +76,20 @@
             },
             popupBindEvents : function (type) {
                 if (type) {
+                    this.popupPrevFocus.on('focusin', this.onPrevFocusFunc.bind(this));
+                    this.popupNextFocus.on('focusin', this.onNextFocusFunc.bind(this));
                     this.opts.closePopup.on('click', this.clickClose.bind(this));
                 } else {
+                    this.popupPrevFocus.off('focusin');
+                    this.popupNextFocus.off('focusin');
                     this.opts.closePopup.off('click');
                 }
+            },
+            onPrevFocusFunc : function () {
+                this.popupWrap.find('a, button, input').filter(':visible').last().focus();
+            },
+            onNextFocusFunc : function () {
+                this.popupWrap.focus()
             },
             clickClose : function (e) {
                 e.preventDefault();
@@ -73,6 +100,15 @@
                 this.popupBindEvents(false);
                 this.opts.targetPopup = null;
                 this.opts.closePopup = null;
+                
+                this.popupPrevFocus.remove();
+                this.popupNextFocus.remove();
+                this.popupPrevFocus = null;
+                this.popupNextFocus = null;
+                this.popupWrap = null;
+
+                this.opts.currTarget.focus();
+                this.opts.currTarget = null;
             }
         };
         return ProjectComponent;

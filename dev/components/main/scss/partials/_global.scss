@@ -22,23 +22,27 @@
         .swiper-pagination-bullet {
             overflow: visible;
             display: block;
-            @include vw-convert-pc(width, 20);
-            @include vw-convert-pc(height, 2);
+            @include vw-convert-pc(width, 50);
+            height: 1px;
             margin-left: auto;
             @include vw-convert-pc(padding, 5 0);
             background-color: transparent;
             border-radius: 0;
+            opacity: .3;
             &:before {
                 display: block;
                 width: 100%;
                 height: 100%;
-                background-color: $color-white;
+                background-color: $color-default;
                 border-radius: 0;
-                content: ''
+                content: '';
+                .type-control-white & {
+                    background-color: $color-white;
+                }
             }
             &.swiper-pagination-bullet-active {
                 opacity: 1;
-                @include vw-convert-pc(width, 40);
+                @include vw-convert-pc(width, 70);
                 transform-origin: right;
                 transition: width .5s ease-out;
             }
@@ -59,8 +63,11 @@
             margin-top: 0;
             @include vw-convert-pc(width, 50);
             @include vw-convert-pc(height, 50);
-            color: $color-white;
+            color: $color-default;
             vertical-align: top;
+            .type-control-white & {
+                color: $color-white;
+            }
             &:after {
                 display: block;
                 position: absolute;
@@ -77,20 +84,23 @@
         right: 0;
         left: 0;
         z-index: 10;
-        @include vw-convert-pc(height, 7);
+        @include vw-convert-pc(height, 8);
         &:before {
             display: block;
             width: 100%;
             height: 100%;
-            background-color: white;
-            opacity: .3;
+            background-color: $color-default;
+            opacity: .5;
             content: '';
+            .type-control-white & {
+                background-color: $color-white;
+            }
         }
         .slide_progress-bar {
             @include absolute-full;
             width: 0%;
-            background-color: white;
-            opacity: .2;
+            background-color: $color-white;
+            opacity: .5;
             content: '';
         }
     }

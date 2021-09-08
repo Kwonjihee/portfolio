@@ -16,7 +16,8 @@
     &-title {
         overflow: hidden;
         display: inline-block;
-        @include vw-font-size-pc(48);
+        @include vw-font-size-pc(38);
+        color: #635f59;
         span {
             display: block;
             transform: translateY(120%);
@@ -31,7 +32,7 @@
             height: 1px;
             @include vw-convert-pc(margin-top, 7);
             transform: scaleX(0) translateZ(0);
-            background-color: $color-white;
+            background-color: #635f59;
             content: '';
             transition: transform .6s ease-in-out;
             .swiper-slide-active & {
@@ -40,7 +41,7 @@
         }
     }
     &-content {
-        @include vw-convert-pc(margin-top, 50);
+        @include vw-convert-pc(margin-top, 60);
     }
     &-bg {
         position: relative;
@@ -48,8 +49,8 @@
         height: 100%;
         &:after {
             @include absolute-full;
-            background-color: $color-black;
-            opacity: .6;
+            background-color: $color-white;
+            opacity: .9;
             content: ''; 
         }
         &-inner {
@@ -82,5 +83,4 @@
             @include vw-convert-mo(margin-top, 30);
         }
     }
-    
 }

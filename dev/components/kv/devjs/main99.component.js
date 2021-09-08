@@ -37,7 +37,7 @@
                 for (var text in nameArr) {
                     nameResult += '<span>' + nameArr[text] + '</span>'
                 }
-                this.titleName.html(nameResult);;
+                this.titleName.html(nameResult);
             },
             changeEvents : function (event) {
                 var events = [],
@@ -66,16 +66,6 @@
                         ease : Power2.easeOut
                     });
                 }
-
-                // TweenMax.fromTo(this.titleEyebrow, 0.8 , {
-                //     y : 20,
-                //     opacity : 0,
-                // }, {
-                //     y : 0,
-                //     opacity : 1,
-                //     delay : 1.2,
-                //     ease : Power3.easeInOut
-                // });
             }
         };
         return KVComponent;
